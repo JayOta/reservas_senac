@@ -1,258 +1,109 @@
-# Sistema de Reserva de Ocupação - Senac
+<p align="center">
+  <img src="logo-colorida.jpg" alt="Logo do Senac" width="300"/>
+</p>
 
-Um sistema web completo para gerenciamento de reservas de espaços, desenvolvido para o Senac com três níveis de acesso distintos.
+# 🚀 Sistema de Reserva de Ocupação - Hackathon Senac
 
-## 🎯 Funcionalidades Principais
+### Uma solução inovadora do **Grupo Vermelho** para otimizar a gestão de espaços.
 
-### 👨‍💼 Administrador
-
-- Dashboard completo com estatísticas
-- Aprovação/recusa de reservas
-- Visualização de todas as solicitações
-- Gerenciamento de usuários
-
-### 👨‍💻 Funcionário
-
-- Solicitação de reservas
-- Acompanhamento do status
-- Visualização do calendário
-- Histórico pessoal
-
-### 👤 Usuário Público
-
-- Visualização da disponibilidade
-- Calendário público
-- Sem necessidade de login
-
-## 🛠️ Tecnologias Utilizadas
-
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Backend**: PHP 7.4+
-- **Banco de Dados**: MySQL 5.7+
-- **Servidor**: Apache/Nginx
-
-## 📋 Pré-requisitos
-
-- PHP 7.4 ou superior
-- MySQL 5.7 ou superior
-- Servidor web (Apache/Nginx)
-- Extensões PHP: PDO, PDO_MySQL
-
-## 🚀 Instalação
-
-### 1. Clone o Repositório
-
-```bash
-git clone [url-do-repositorio]
-cd reservas_ocupacao
-```
-
-### 2. Configure o Banco de Dados
-
-1. Crie um banco de dados MySQL
-2. Execute o script `schema.sql` para criar as tabelas:
-
-```sql
-mysql -u root -p < schema.sql
-```
-
-### 3. Configure a Conexão
-
-Edite o arquivo `config/database.php` com suas credenciais:
-
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'reservas_ocupacao');
-define('DB_USER', 'seu_usuario');
-define('DB_PASS', 'sua_senha');
-```
-
-### 4. Configure o Servidor Web
-
-- Coloque os arquivos na pasta do servidor web
-- Certifique-se de que o PHP está configurado corretamente
-- Acesse via navegador: `http://localhost/reservas_ocupacao`
-
-## 👥 Contas de Teste
-
-### Administrador
-
-- **Email**: admin@senac.com
-- **Senha**: admin123
-
-### Funcionário
-
-- **Email**: joao.silva@senac.com
-- **Senha**: funcionario123
-
-## 📁 Estrutura do Projeto
-
-```
-reservas_ocupacao/
-├── admin/                  # Área administrativa
-│   └── dashboard.php
-├── ajax/                   # Endpoints AJAX
-│   ├── approve_reservation.php
-│   ├── reject_reservation.php
-│   └── calendar.php
-├── config/                 # Configurações
-│   └── database.php
-├── css/                    # Estilos
-│   └── style.css
-├── funcionario/            # Área do funcionário
-│   └── dashboard.php
-├── includes/              # Classes e funções
-│   ├── auth.php
-│   ├── reserva.php
-│   └── logout.php
-├── js/                     # JavaScript
-│   └── main.js
-├── public/                 # Área pública
-│   └── calendario.php
-├── index.php              # Página inicial
-├── login.php              # Login
-├── register.php            # Cadastro
-├── schema.sql             # Script do banco
-└── README.md              # Este arquivo
-```
-
-## 🎨 Design e Interface
-
-### Características Visuais
-
-- Design moderno e profissional
-- Paleta de cores neutra (facilmente customizável)
-- Totalmente responsivo
-- Animações suaves e transições
-- Interface intuitiva
-
-### Cores Principais
-
-- **Primária**: #2c3e50 (Azul escuro)
-- **Secundária**: #3498db (Azul)
-- **Sucesso**: #27ae60 (Verde)
-- **Aviso**: #f39c12 (Laranja)
-- **Perigo**: #e74c3c (Vermelho)
-
-## 🔧 Funcionalidades Técnicas
-
-### Sistema de Autenticação
-
-- Login seguro com hash de senhas
-- Controle de sessões
-- Diferentes níveis de acesso
-- Proteção contra acesso não autorizado
-
-### Gerenciamento de Reservas
-
-- Verificação de conflitos
-- Status: Pendente, Aprovada, Recusada
-- Histórico completo
-- Observações do administrador
-
-### Calendário Interativo
-
-- Visualização mensal
-- Navegação entre meses
-- Cores diferenciadas por status
-- Responsivo para mobile
-
-## 📱 Responsividade
-
-O sistema é totalmente responsivo e funciona perfeitamente em:
-
-- **Desktop**: Interface completa
-- **Tablet**: Layout adaptado
-- **Mobile**: Interface otimizada
-
-## 🔒 Segurança
-
-- Senhas criptografadas com `password_hash()`
-- Validação de dados de entrada
-- Proteção contra SQL Injection (PDO)
-- Controle de sessões
-- Sanitização de outputs
-
-## 🚀 Como Usar
-
-### Para Administradores
-
-1. Faça login com as credenciais de admin
-2. Acesse o dashboard administrativo
-3. Visualize e gerencie todas as reservas
-4. Aprove ou recuse solicitações pendentes
-
-### Para Funcionários
-
-1. Cadastre-se ou faça login
-2. Acesse seu dashboard pessoal
-3. Solicite novas reservas
-4. Acompanhe o status das suas solicitações
-
-### Para Usuários Públicos
-
-1. Acesse a página pública
-2. Visualize o calendário de disponibilidade
-3. Veja quais horários estão ocupados
-
-## 🛠️ Personalização
-
-### Cores e Logo
-
-Para personalizar as cores e adicionar o logo do Senac:
-
-1. **Cores**: Edite as variáveis CSS em `css/style.css`:
-
-```css
-:root {
-  --primary-color: #sua-cor-primaria;
-  --secondary-color: #sua-cor-secundaria;
-  /* ... */
-}
-```
-
-2. **Logo**: Substitua o texto do logo em:
-   - `index.php` (linha do logo)
-   - `login.php`
-   - `register.php`
-   - Outras páginas conforme necessário
-
-### Configurações do Banco
-
-Edite `config/database.php` para suas configurações específicas.
-
-## 🐛 Solução de Problemas
-
-### Erro de Conexão com Banco
-
-- Verifique as credenciais em `config/database.php`
-- Certifique-se de que o MySQL está rodando
-- Verifique se o banco foi criado corretamente
-
-### Problemas de Sessão
-
-- Verifique se as sessões estão habilitadas no PHP
-- Limpe o cache do navegador
-- Verifique as permissões dos arquivos
-
-### Erro 500
-
-- Verifique os logs de erro do servidor
-- Certifique-se de que todas as extensões PHP estão instaladas
-- Verifique as permissões dos arquivos
-
-## 📞 Suporte
-
-Para suporte técnico ou dúvidas sobre o sistema:
-
-- Verifique a documentação
-- Consulte os logs de erro
-- Entre em contato com a equipe de desenvolvimento
-
-## 📄 Licença
-
-Este projeto foi desenvolvido especificamente para o Senac. Todos os direitos reservados.
+<p align="center">
+  <em>Desenvolvido por alunos do Ensino Médio Técnico como proposta para o Hackathon Senac.</em>
+</p>
 
 ---
 
-**Desenvolvido com ❤️ para o Senac**
+## 💡 A Nossa Missão: O Desafio
+
+Nós somos o **Grupo Vermelho**, e nossa missão neste Hackathon foi resolver um desafio real e presente no dia a dia do Senac: **como gerenciar a reserva de salas e espaços de forma eficiente, transparente e sem conflitos?**
+
+Identificamos os seguintes pontos de dor no processo tradicional:
+
+- 🤯 **Falta de Transparência:** Era difícil saber quais horários estavam realmente livres sem consultar uma pessoa ou uma planilha complexa.
+- ⏳ **Processos Manuais:** As solicitações por e-mail ou formulários de papel são lentas e podem se perder.
+- ⚠️ **Risco de Conflitos:** Agendamentos duplicados para o mesmo espaço e horário eram uma possibilidade real, causando frustração.
+
+Nossa resposta a este desafio é uma plataforma web completa, construída do zero.
+
+---
+
+## ✨ A Nossa Solução: Uma Plataforma Centralizada e Inteligente
+
+Criamos um sistema web que не apenas resolve os problemas, mas também cria uma experiência de usuário fantástica para cada tipo de pessoa envolvida.
+
+Nossa solução se baseia em **três pilares (ou perfis de usuário)**:
+
+| Perfil               | Quem é?           | Qual o seu superpoder?                                         |
+| :------------------- | :---------------- | :------------------------------------------------------------- |
+| 👨‍💼 **Administrador** | O Gestor do Senac | **Aprovar, recusar e gerenciar** todas as reservas e usuários. |
+| 👨‍💻 **Funcionário**   | A equipe do Senac | **Solicitar espaços** e acompanhar o status em tempo real.     |
+| 👤 **Público**       | A comunidade      | **Visualizar a disponibilidade** de forma rápida e anônima.    |
+
+---
+
+## 🔧 Como Funciona na Prática? (Demonstração)
+
+Vamos navegar pelas funcionalidades de cada perfil.
+
+### 👨‍💼 **O Painel do Administrador: O Centro de Controle**
+
+O administrador tem uma visão 360º de tudo o que acontece.
+
+- ✅ **Aprovação Ágil:** Com um clique, as solicitações pendentes são aprovadas ou recusadas.
+- 📊 **Dashboard Inteligente:** Métricas rápidas sobre o total de reservas, quantas estão pendentes, aprovadas ou recusadas.
+- 👥 **Gerenciamento de Equipe (CRUD):** O admin é o único que pode **cadastrar, editar e remover** os funcionários do sistema, garantindo total controle de acesso.
+
+### 👨‍💻 **A Área do Funcionário: Simplicidade e Autonomia**
+
+Focamos em uma experiência sem atritos para a equipe.
+
+- 📝 **Solicitação em Segundos:** Um formulário simples permite agendar um espaço preenchendo data, hora e motivo.
+- **STATUS Feedback Imediato:** O funcionário vê instantaneamente se sua solicitação está "Pendente", foi "Aprovada" ou "Recusada".
+- 🗓️ **Planejamento Fácil:** O calendário interativo ajuda a encontrar o melhor horário antes mesmo de solicitar.
+
+### 👤 **A Visão Pública: Transparência para Todos**
+
+Qualquer pessoa pode acessar o site e, sem precisar de login, ver o calendário.
+
+- 👁️ **Calendário Público:** Mostra de forma clara e visual quais dias e horários já estão **Ocupados** (vermelho) ou com solicitações **Pendentes** (laranja).
+- 🔒 **Privacidade Garantida:** Detalhes como "quem reservou" ou "o motivo" são visíveis apenas para os usuários logados, protegendo a privacidade.
+
+---
+
+## 🛠️ As Ferramentas que Usamos (Nossa "Tech Stack")
+
+Para transformar nossa ideia em realidade, utilizamos tecnologias web modernas e robustas, com foco em segurança e performance.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+</p>
+
+- **Backend (A Lógica):** **PHP**, pela sua maturidade e integração com servidores web.
+- **Banco de Dados (A Memória):** **MySQL**, para armazenar os dados de forma segura e estruturada.
+- **Frontend (A Interface):** **HTML5, CSS3 e JavaScript**, para criar uma experiência de usuário dinâmica, responsiva e visualmente alinhada à identidade do Senac.
+
+---
+
+## 🚀 Como Testar Nossa Solução
+
+É muito fácil ver o sistema em ação!
+
+1.  **Ambiente:** Garanta que um servidor local como o XAMPP esteja rodando.
+2.  **Banco de Dados:** Crie um banco com o nome `reservas_ocupacao` e importe o nosso arquivo `schema.sql`.
+3.  **Acesse:** Abra o navegador em `http://localhost/reservas_ocupacao`.
+
+> **Contas de Teste:**
+>
+> - **Login de Administrador:** `admin@senac.com` | Senha: `admin123`
+> - **Login de Funcionário:** `joao.silva@senac.com` | Senha: `funcionario123`
+
+---
+
+<p align="center">
+  Desenvolvido com 💡 e ☕ pelo <strong>Grupo Vermelho</strong>.
+  <br>
+  Obrigado!
+</p>
