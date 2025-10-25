@@ -1,16 +1,16 @@
 <?php
 // Configurações do banco de dados
-define('DB_HOST', 'sql302.infinityfree.com');
-define('DB_NAME', 'if0_40245841_reservas_ocupacao');
-define('DB_USER', 'if0_40245841');
-define('DB_PASS', '3XN66dEe14');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'reservas_ocupacao');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 class Database
 {
-    private $host = 'sql302.infinityfree.com';
-    private $db_name = 'if0_40245841_reservas_ocupacao';
-    private $username = 'if0_40245841';
-    private $password = '3XN66dEe14';
+    private $host = 'localhost';
+    private $db_name = 'reservas_ocupacao';
+    private $username = 'root';
+    private $password = '';
     private $conn;
 
     public function getConnection()

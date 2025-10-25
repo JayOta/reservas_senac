@@ -34,11 +34,12 @@ class Reserva
 
     public function verificarConflito($data_inicio, $data_fim)
     {
+        // --- MODIFICADO: Adicionada a condição "data_fim > NOW()" ---
+        // Agora, o sistema só verifica conflitos com reservas que ainda não terminaram.
         $query = "SELECT id FROM " . $this->table_name . " 
                   WHERE status IN ('pendente', 'aprovada') 
-                  AND ((data_inicio <= :data_inicio AND data_fim > :data_inicio) 
-                       OR (data_inicio < :data_fim AND data_fim >= :data_fim)
-                       OR (data_inicio >= :data_inicio AND data_fim <= :data_fim))";
+                  AND data_fim > NOW() 
+                  AND ((data_inicio < :data_fim) AND (data_fim > :data_inicio))";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':data_inicio', $data_inicio);
@@ -47,6 +48,16 @@ class Reserva
 
         return $stmt->rowCount() > 0;
     }
+
+    // --- ADICIONADO: Nova função para excluir reservas ---
+    public function excluirReserva($id_reserva)
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id_reserva);
+        return $stmt->execute();
+    }
+    // --- FIM DA ADIÇÃO ---
 
     public function getReservasPorUsuario($id_usuario)
     {
@@ -68,7 +79,7 @@ class Reserva
         $query = "SELECT r.*, u.nome as usuario_nome, u.email as usuario_email 
                   FROM " . $this->table_name . " r 
                   JOIN usuarios u ON r.id_usuario = u.id 
-                  ORDER BY r.data_solicitacao DESC";
+                  ORDER BY r.data_inicio DESC"; // <-- MUDANÇA AQUI! DE 'data_solicacao' PARA 'data_inicio'
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -82,7 +93,7 @@ class Reserva
                   FROM " . $this->table_name . " r 
                   JOIN usuarios u ON r.id_usuario = u.id 
                   WHERE r.status = 'pendente' 
-                  ORDER BY r.data_solicitacao ASC";
+                  ORDER BY r.data_inicio ASC";
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();

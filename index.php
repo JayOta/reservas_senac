@@ -131,7 +131,7 @@ if ($auth->isLoggedIn()) {
     <footer class="footer">
         <div class="container">
             <div class="text-center">
-                <p>&copy; 2024 Sistema de Reservas - Senac. Todos os direitos reservados.</p>
+                <p>&copy; <?php echo date('Y'); ?> Sistema de Reservas - Senac. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
